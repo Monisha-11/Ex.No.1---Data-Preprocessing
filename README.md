@@ -24,18 +24,80 @@ Another aspect is that the data set should be formatted in such a way that more 
 
 
 ## ALGORITHM:
-Importing the libraries
-Importing the dataset
-Taking care of missing data
-Encoding categorical data
-Normalizing the data
-Splitting the data into test and train
+1) Importing the libraries
+2) Importing the dataset
+3) Taking care of missing data
+4) Encoding categorical data
+5) Normalizing the data
+6) Splitting the data into test and train
 
 ## PROGRAM:
-/Write your code here/
+```java
+
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+import pandas as pd
+df = pd.read_csv('Churn_Modelling.csv')
+df.head()
+le=LabelEncoder()
+df["CustomerId"]=le.fit_transform(df["CustomerId"])
+df["Surname"]=le.fit_transform(df["Surname"])
+df["CreditScore"]=le.fit_transform(df["CreditScore"])
+df["Geography"]=le.fit_transform(df["Geography"])
+df["Gender"]=le.fit_transform(df["Gender"])
+df["Balance"]=le.fit_transform(df["Balance"])
+df["EstimatedSalary"]=le.fit_transform(df["EstimatedSalary"])
+X=df.iloc[:,:-1].values
+print(X)
+Y=df.iloc[:,-1].values
+print(Y)
+print(df.isnull().sum())
+df.fillna(df.mean().round(1),inplace=True)
+print(df.isnull().sum())
+y=df.iloc[:,-1].values
+print(y)
+df.duplicated()
+print(df['Exited'].describe())
+scaler= MinMaxScaler()
+df1=pd.DataFrame(scaler.fit_transform(df))
+print(df1)
+x_train,x_test,y_train,x_test=train_test_split(X,Y,test_size=0.2)
+print(x_train)
+print(len(x_train))
+print(x_test)
+print(len(x_test))
+
+```
 
 ## OUTPUT:
-/ Show the result/
+
+### Printing first five rows and cols of given dataset:
+<img width="851" alt="image" src="https://user-images.githubusercontent.com/93427240/229366467-cd4accdc-238c-41a8-98cf-5723db40134c.png">
+
+### Seperating x and y values:
+<img width="326" alt="image" src="https://user-images.githubusercontent.com/93427240/229366554-5a780302-6964-4823-bc9c-34236dc93a20.png">
+
+### Checking NULL value in the given dataset:
+<img width="169" alt="image" src="https://user-images.githubusercontent.com/93427240/229366658-c458da1a-3624-4a25-8b39-d73ece7eb91e.png">
+
+### Printing the Y column along with its discribtion:
+<img width="223" alt="image" src="https://user-images.githubusercontent.com/93427240/229366737-b30efb6c-ad5f-4de3-a646-56b77d0c159a.png">
+
+### Applyign data preprocessing technique and printing the dataset:
+![image](https://user-images.githubusercontent.com/93427240/229366905-2efc7a3a-e462-47da-afca-25e9712c4b0d.png)
+
+
+### Printing training set:
+<img width="267" alt="image" src="https://user-images.githubusercontent.com/93427240/229366835-13a53d14-cc94-4cd1-a730-8d9c92d182be.png">
+
+### Printing testing set and length of it:
+![Uploading image.png…]()
+
+
 
 ## RESULT
-/Type your result here/
+Hence the data preprocessing is done using the above code and data has been splitted into trainning and testing
+data for getting a better model 
