@@ -94,8 +94,8 @@ print(len(x_test))
 <img width="267" alt="image" src="https://user-images.githubusercontent.com/93427240/229366835-13a53d14-cc94-4cd1-a730-8d9c92d182be.png">
 
 ### Printing testing set and length of it:
-![Uploading image.png…]()
 
+![image](https://user-images.githubusercontent.com/93427240/229367157-09e9fb22-10eb-45ad-93e2-5a300b6064dc.png)
 
 
 ## RESULT
